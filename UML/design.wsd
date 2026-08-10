@@ -1,22 +1,19 @@
 @startuml TarotClassDiag
 
-legend
-    Formatage : Alt + Shift + F
-end legend
+top to bottom direction
+skinparam linetype ortho
 
-left to right direction
-skinparam PackageStyle rect
+' ======== Definition classes =========
+object Game
+object Board
+object Player
+object Hand
+object Deck
+object Card
+object TrumpCard
+object ColorCard
 
-class Game
-class Board
-class Player
-class Hand
-class Deck
-abstract Card
-class TrumpCard
-class ColorCard
-class ExcuseCard
-
+' ======== Definition liaisons =========
 Card "0-78" --* Deck
 Card "0-78" --o Hand
 
@@ -30,6 +27,25 @@ Card "0-78" --o Board
 
 Card <|-- TrumpCard
 Card <|-- ColorCard
-Card <|-- ExcuseCard
+
+' ======== Definition attributs =========
+Card : string value
+ColorCard : string symbol
+
+Deck : vector<Card> cards
+
+Player : int score
+Player : Hand hand
+
+Hand : vector<*Card> cards
+
+Board : vector<*Card> chien
+
+Game : vector<Player> players
+Game : Board board
+Game : Deck deck
+Game : .*Player dealer
+Game : .*Player cutter
+
 
 @enduml
