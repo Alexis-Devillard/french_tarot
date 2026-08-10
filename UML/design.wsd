@@ -1,0 +1,35 @@
+@startuml TarotClassDiag
+
+legend
+    Formatage : Alt + Shift + F
+end legend
+
+left to right direction
+skinparam PackageStyle rect
+
+class Game
+class Board
+class Player
+class Hand
+class Deck
+abstract Card
+class TrumpCard
+class ColorCard
+class ExcuseCard
+
+Card "0-78" --* Deck
+Card "0-78" --o Hand
+
+Hand "1" --* Player
+
+Deck "1" --* Game
+Board "1" --* Game
+Player "3-5" --* Game
+
+Card "0-78" --o Board
+
+Card <|-- TrumpCard
+Card <|-- ColorCard
+Card <|-- ExcuseCard
+
+@enduml
