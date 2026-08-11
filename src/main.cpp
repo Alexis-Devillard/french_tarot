@@ -1,13 +1,17 @@
-#include "cards/card.h"
+#include "cards/colorCard.h"
+#include "cards/trumpCard.h"
 #include <iostream>
 
 
 int main() {
-    Card roi = Card("Roi");
-    Card nb = Card("8");
+    ColorCard roi = ColorCard("Roi", "Coeur");
+    TrumpCard trump = TrumpCard("8");
 
-    std::cout << roi << std::endl;
-    std::cout << nb << std::endl;
+    Card& card1 = roi;
+    Card& card2 = trump;
+
+    std::cout << card1 << std::endl;
+    std::cout << card2 << std::endl;
 
     return 0;
 }

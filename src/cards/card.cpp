@@ -2,17 +2,12 @@
 
 Card::Card(string value)
 {
-    Card::value = value;
+    this->value = value;
 }
 
 string Card::getValue() const
 {
-    return Card::value;
-}
-
-string Card::display() const
-{
-    return "Card : " + Card::getValue();
+    return this->value;
 }
 
 std::ostream& operator<<(std::ostream& os, const Card& card)

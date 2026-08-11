@@ -17,7 +17,7 @@ public:
     string getValue() const;
 
     // ==== UI ====
-    string display() const;
+    virtual string display() const = 0;
 };
 
 std::ostream& operator<<(std::ostream& os, const Card& card);

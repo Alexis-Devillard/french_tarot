@@ -9,6 +9,8 @@
                 "-g",
                 "${workspaceFolder}\\src\\main.cpp",
                 "${workspaceFolder}\\src\\cards\\card.cpp",
+                "${workspaceFolder}\\src\\cards\\colorCard.cpp",
+                "${workspaceFolder}\\src\\cards\\trumpCard.cpp",
                 "-o",
                 "${workspaceFolder}\\src\\tarot.exe",
             ],
