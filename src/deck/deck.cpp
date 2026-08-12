@@ -2,6 +2,9 @@
 #include "../cards/colorCard.h"
 
 #include <string>
+#include <random>
+#include <iostream>
+#include <stdexcept>
 using std::string;
 
 Deck::Deck()
@@ -26,6 +29,40 @@ Deck::Deck()
         cards.emplace_back(std::make_unique<ColorCard>("Queen", suit));
         cards.emplace_back(std::make_unique<ColorCard>("King", suit));
     }
+}
+
+void Deck::initDrawPile()
+{
+    drawPile.clear();
+
+    for (const auto& card : cards)
+    {
+        drawPile.push_back(card.get());
+    }
+}
+
+Card* Deck::drawCard()
+{
+    if (drawPile.empty())
+    {
+        throw std::runtime_error("Can't draw from empty pile");
+    }
+
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_int_distribution<size_t> dist(0, drawPile.size() - 1);
+
+    size_t index = dist(gen);
+    Card* card = drawPile[index];
+
+    drawPile.erase(drawPile.begin() + index);
+
+    return card;
+}
+
+size_t Deck::getSize() const
+{
+    return this->cards.size();
 }
 
 string Deck::display() const
