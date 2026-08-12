@@ -12,6 +12,7 @@ private:
     
 public:
     Card(string value);
+    virtual ~Card() = default;
 
     // ==== Getters/Setters ====
     string getValue() const;

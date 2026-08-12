@@ -7,10 +7,15 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+
                 "${workspaceFolder}\\src\\main.cpp",
+
                 "${workspaceFolder}\\src\\cards\\card.cpp",
                 "${workspaceFolder}\\src\\cards\\colorCard.cpp",
                 "${workspaceFolder}\\src\\cards\\trumpCard.cpp",
+
+                "${workspaceFolder}\\src\\deck\\deck.cpp",
+
                 "-o",
                 "${workspaceFolder}\\src\\tarot.exe",
             ],
