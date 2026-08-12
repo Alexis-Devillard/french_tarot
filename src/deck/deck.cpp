@@ -1,5 +1,6 @@
 #include "deck.h"
 #include "../cards/colorCard.h"
+#include "../cards/trumpCard.h"
 
 #include <string>
 #include <random>
@@ -9,6 +10,7 @@ using std::string;
 
 Deck::Deck()
 {
+    // Color cards
     const std::vector<std::string> suits = {
         "Heart",
         "Diamond",
@@ -16,7 +18,6 @@ Deck::Deck()
         "Spade"
     };
 
-    // Color cards
     for (const std::string& suit : suits) {
         for (size_t i = 1; i < 11; i++) {
             cards.emplace_back(
@@ -28,6 +29,14 @@ Deck::Deck()
         cards.emplace_back(std::make_unique<ColorCard>("Knight", suit));
         cards.emplace_back(std::make_unique<ColorCard>("Queen", suit));
         cards.emplace_back(std::make_unique<ColorCard>("King", suit));
+    }
+
+    // Trumps cards
+    for (size_t i = 0; i < 22; i++)
+    {
+        cards.emplace_back(
+            std::make_unique<TrumpCard>(std::to_string(i))
+        );
     }
 }
 
