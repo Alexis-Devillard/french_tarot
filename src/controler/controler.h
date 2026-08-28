@@ -6,7 +6,7 @@
 
 #include "../player/player.h"
 
-using std::string
+using std::string;
 
 class Controler
 {
@@ -17,5 +17,5 @@ private:
 public:
     Controler(int nbPlayers);
 
-    addPlayer(string name);
+    Player& addPlayer(string name);
 };
