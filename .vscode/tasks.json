@@ -16,6 +16,8 @@
 
                 "${workspaceFolder}\\src\\deck\\deck.cpp",
 
+                "${workspaceFolder}\\src\\controler\\controler.cpp",
+
                 "-o",
                 "${workspaceFolder}\\src\\tarot.exe",
             ],

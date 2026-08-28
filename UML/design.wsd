@@ -37,15 +37,15 @@ Deck : vector<Card> cards
 Player : int score
 Player : Hand hand
 
-Hand : vector<*Card> cards
+Hand : vector<Card*> cards
 
-Board : vector<*Card> chien
+Board : vector<Card*> chien
 
 Game : vector<Player> players
 Game : Board board
 Game : Deck deck
-Game : .*Player dealer
-Game : .*Player cutter
+Game : Player* dealer
+Game : Player* cutter
 
 
 @enduml
