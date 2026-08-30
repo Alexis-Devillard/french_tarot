@@ -18,6 +18,8 @@
 
                 "${workspaceFolder}\\src\\controler\\controler.cpp",
 
+                "${workspaceFolder}\\src\\player\\player.cpp",
+
                 "-o",
                 "${workspaceFolder}\\src\\tarot.exe",
             ],

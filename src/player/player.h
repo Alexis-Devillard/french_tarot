@@ -1,10 +1,17 @@
 #pragma once
 
+#include <string>
+
+using std::string;
+
 class Player
 {
 private:
-    /* data */
+    string name;
 public:
-    Player(/* args */);
+    Player(string name);
 
+    // ==== Getters/Setters ====
+    string getName() const;
+    void setName(string& name);
 };

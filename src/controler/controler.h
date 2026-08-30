@@ -5,6 +5,7 @@
 #include <string>
 
 #include "../player/player.h"
+#include "../deck/deck.h"
 
 using std::string;
 
@@ -13,9 +14,21 @@ class Controler
 private:
     // TODO: distribution
     std::vector<Player> players;
+    Player* dealer;
+    Player* cutter;
+
+    Deck deck;
 
 public:
+    Controler();
     Controler(int nbPlayers);
+    
+    //Player& addPlayer(string name);
 
-    Player& addPlayer(string name);
+    // ==== Getters/Setters ====
+
+    // ==== UI ====
+    string display() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const Controler& controler);
