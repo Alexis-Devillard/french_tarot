@@ -36,7 +36,7 @@ string Controler::display() const
     }
 
     result += "====== Deck ======\n";
-    result += "Nombre cartes deck: " + std::to_string(deck.getSize()) + "\n";
+    result += "Nombre cartes deck: " + std::to_string(deck.getDrawPileSize()) + "\n";
     
     return result;
 }
