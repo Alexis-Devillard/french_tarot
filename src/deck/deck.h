@@ -22,7 +22,7 @@ public:
     Card* drawCard();
 
     // ==== Getters/Setters ====
-    size_t getSize() const;
+    size_t getDrawPileSize() const;
 
     // ==== UI ====
    string display() const;

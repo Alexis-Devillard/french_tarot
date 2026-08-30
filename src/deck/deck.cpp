@@ -8,6 +8,16 @@
 #include <stdexcept>
 using std::string;
 
+/** 
+ * @brief Constructs a standard French Tarot deck. 
+ * 
+ * Creates the 78 cards composing a French Tarot deck:
+ * - 56 suited cards: 4 suits with cards from 1 to 10, followed by Jack, Knight, Queen and King.
+ * - 22 trump cards, numbered from 0 to 21.
+ * 
+ * The cards are stored in the deck's owning container.
+ * The draw pile is initialized separately using initDrawPile(). 
+*/
 Deck::Deck()
 {
     // Color cards
@@ -40,6 +50,11 @@ Deck::Deck()
     }
 }
 
+/**
+ * @brief Initializes the draw pile with all cards in the deck.
+ * 
+ * Clears the current draw pile and fill it with non-owning pointer to each card stored in the deck.
+ */
 void Deck::initDrawPile()
 {
     drawPile.clear();
@@ -50,6 +65,12 @@ void Deck::initDrawPile()
     }
 }
 
+/**
+ * @brief Draws a random card from the draw pile.
+ * 
+ * Selects a card at random, removes it from the draw pile
+ * and returns a pointer to the selected card.
+ */
 Card* Deck::drawCard()
 {
     if (drawPile.empty())
@@ -69,9 +90,9 @@ Card* Deck::drawCard()
     return card;
 }
 
-size_t Deck::getSize() const
+size_t Deck::getDrawPileSize() const
 {
-    return this->cards.size();
+    return this->drawPile.size();
 }
 
 string Deck::display() const
