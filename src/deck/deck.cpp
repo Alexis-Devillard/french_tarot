@@ -95,6 +95,9 @@ size_t Deck::getDrawPileSize() const
     return this->drawPile.size();
 }
 
+/**
+ * @brief Returns a text representation of the deck.
+ */
 string Deck::display() const
 {
     string result = "";

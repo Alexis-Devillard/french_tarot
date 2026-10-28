@@ -22,8 +22,9 @@ private:
 public:
     Controler();
     Controler(int nbPlayers);
-    
-    //Player& addPlayer(string name);
+
+    // ==== Game operations ===
+    void startNewGame();
 
     // ==== Getters/Setters ====
 

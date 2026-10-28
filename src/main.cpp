@@ -9,5 +9,9 @@ int main() {
 
     std::cout << controler << std::endl;
 
+    controler.startNewGame();
+
+    std::cout << controler << std::endl;
+
     return 0;
 }
