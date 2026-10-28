@@ -6,6 +6,8 @@
 #include <random>
 #include <iostream>
 #include <stdexcept>
+#include <algorithm>
+
 using std::string;
 
 /** 
@@ -63,6 +65,10 @@ void Deck::initDrawPile()
     {
         drawPile.push_back(card.get());
     }
+
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::shuffle(drawPile.begin(), drawPile.end(), gen);
 }
 
 /**
@@ -78,14 +84,8 @@ Card* Deck::drawCard()
         throw std::runtime_error("Can't draw from empty pile");
     }
 
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    std::uniform_int_distribution<size_t> dist(0, drawPile.size() - 1);
-
-    size_t index = dist(gen);
-    Card* card = drawPile[index];
-
-    drawPile.erase(drawPile.begin() + index);
+    Card* card = drawPile.back();
+    drawPile.pop_back();
 
     return card;
 }

@@ -12,4 +12,5 @@ Section to keep track of what I already implemented and what is next in the todo
 - init a controler with a number of player
 
 ## TODO list
-- Initial distribution of cards at the start of the game -> a distribution class that will herite for each type of distrib
+- Feature GOAL: Start a new game from 0 to just before playing begins
+    - Initial distribution of cards at the start of the game -> a distribution class that will herite for each type of distrib

@@ -17,6 +17,8 @@ private:
 
 public:
     Deck();
+    Deck(const Deck&) = delete;
+    Deck& operator=(const Deck&) = delete;
 
     void initDrawPile();
     Card* drawCard();

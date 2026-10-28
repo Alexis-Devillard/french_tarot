@@ -6,18 +6,18 @@
 
 #include "../player/player.h"
 #include "../deck/deck.h"
+#include "../board/board.h"
 
 using std::string;
 
 class Controler
 {
 private:
-    // TODO: distribution
     std::vector<Player> players;
-    Player* dealer;
-    Player* cutter;
+    std::size_t dealerIndex;
 
     Deck deck;
+    Board board;
 
 public:
     Controler();
@@ -25,8 +25,10 @@ public:
 
     // ==== Game operations ===
     void startNewGame();
+    void distributeCards();
 
     // ==== Getters/Setters ====
+    std::size_t getDealerIndex() const;
 
     // ==== UI ====
     string display() const;

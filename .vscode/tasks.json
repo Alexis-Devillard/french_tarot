@@ -20,6 +20,8 @@
 
                 "${workspaceFolder}\\src\\player\\player.cpp",
 
+                "${workspaceFolder}\\src\\board\\board.cpp",
+
                 "-o",
                 "${workspaceFolder}\\src\\tarot.exe",
             ],

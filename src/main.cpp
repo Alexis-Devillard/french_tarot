@@ -13,5 +13,9 @@ int main() {
 
     std::cout << controler << std::endl;
 
+    controler.distributeCards();
+
+    std::cout << controler << std::endl;
+
     return 0;
 }
