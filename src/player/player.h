@@ -29,4 +29,9 @@ public:
     void setScore(int score);
 
     std::size_t getHandSize() const;
+
+    // ==== UI ====
+    string display() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const Player& player);

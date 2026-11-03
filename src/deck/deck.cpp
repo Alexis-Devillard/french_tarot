@@ -100,11 +100,13 @@ size_t Deck::getDrawPileSize() const
  */
 string Deck::display() const
 {
-    string result = "";
-    for (size_t i = 0; i < this->cards.size(); i++)
+    string result = "Number of cards in deck: " + std::to_string(this->cards.size()) + "\n";
+    result += "Number of cards in draw pile: " + std::to_string(this->drawPile.size()) + "\n";
+
+    result += "Cards:";
+    for (size_t i = 0; i < this->drawPile.size(); i++)
     {
-        result += this->cards[i]->display();
-        result += "\n";
+        result += "   " + this->drawPile[i]->display();
     }
 
     return result;

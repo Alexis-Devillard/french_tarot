@@ -24,7 +24,7 @@ public:
     Controler(int nbPlayers);
 
     // ==== Game operations ===
-    void startNewGame();
+    void initNewGame();
     void distributeCards();
 
     // ==== Getters/Setters ====

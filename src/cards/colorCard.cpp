@@ -12,5 +12,5 @@ string ColorCard::getSymbol() const
 
 string ColorCard::display() const
 {
-    return "Card : " + this->getValue() + " " + this->getSymbol();
+    return this->getValue() + " " + this->getSymbol();
 }

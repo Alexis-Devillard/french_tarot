@@ -9,7 +9,7 @@ int main() {
 
     std::cout << controler << std::endl;
 
-    controler.startNewGame();
+    controler.initNewGame();
 
     std::cout << controler << std::endl;
 

@@ -35,7 +35,7 @@ Controler::Controler(int nbPlayers)
  * Sets the first two players as dealer and cutter, then initializes the draw pile.
  * Card distribution is then lunched.
  */
-void Controler::startNewGame()
+void Controler::initNewGame()
 {
     if (players.empty())
     {
@@ -107,7 +107,7 @@ void Controler::distributeCards()
 
 std::size_t Controler::getDealerIndex() const
 {
-    return std::size_t();
+    return this->dealerIndex;
 }
 
 /**
@@ -115,21 +115,18 @@ std::size_t Controler::getDealerIndex() const
  */
 string Controler::display() const
 {
-    // TODO: replace by the classes own display function
     string result;
     result += "====== Players ======\n";
     for (const Player& player : this->players)
     {
-        result += player.getName() + "\t";
-        result += "Score: " + std::to_string(player.getScore()) + "\t";
-        result += "Nombre cartes main: " + std::to_string(player.getHandSize()) + "\n";
+        result += player.display() + "\n";
     }
 
     result += "====== Board ======\n";
-    result += "Nombre cartes chien: " + std::to_string(this->board.getDogSize()) + "\n";
+    result += this->board.display() + "\n";
 
     result += "====== Deck ======\n";
-    result += "Nombre cartes deck: " + std::to_string(this->deck.getDrawPileSize()) + "\n";
+    result += this->deck.display() + "\n";
     
     return result;
 }

@@ -41,3 +41,16 @@ std::size_t Player::getHandSize() const
 {
     return this->hand.size();
 }
+
+string Player::display() const
+{
+    string result = this->getName() + "\t";
+    result += "Score: " + std::to_string(this->getScore()) + "\t";
+    result += "Nombre cartes main: " + std::to_string(this->getHandSize());
+    return result;
+}
+
+std::ostream &operator<<(std::ostream &os, const Player &player)
+{
+    return os << player.display();
+}
