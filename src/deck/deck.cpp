@@ -112,6 +112,9 @@ string Deck::display() const
     return result;
 }
 
+/**
+ * @brief Writes the deck's text representation to a stream.
+ */
 std::ostream &operator<<(std::ostream &os, const Deck &deck)
 {
     return os << deck.display();

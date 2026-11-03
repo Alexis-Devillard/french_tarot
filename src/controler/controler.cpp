@@ -3,6 +3,9 @@
 #include <random>
 #include <stdexcept>
 
+/**
+ * @brief Constructs a controller without any players.
+ */
 Controler::Controler()
 {
 }
@@ -32,14 +35,15 @@ Controler::Controler(int nbPlayers)
 /**
  * @brief Resets player scores and prepares all clases for a new game.
  *
- * Sets the first two players as dealer and cutter, then initializes the draw pile.
+ * Sets the dealer, then initializes the draw pile.
  * Card distribution is then lunched.
+ * @throws std::logic_error if the number of players is not between 3 and 5.
  */
 void Controler::initNewGame()
 {
-    if (players.empty())
+    if (players.size() < 3 || players.size() > 5)
     {
-        throw std::logic_error("Cannot start a game without players.");
+        throw std::logic_error("Number of players must be between 3 and 5.");
     }
 
     // Initial distribution setup
@@ -57,6 +61,13 @@ void Controler::initNewGame()
     this->deck.initDrawPile();
 }
 
+/**
+ * @brief Deals cards to each player and places the remaining cards in the dog.
+ *
+ * Cards are dealt in packets of three, starting with the player after the dealer.
+ * @throws std::logic_error if there are no players, too few cards for the dog,
+ * or the remaining cards cannot be distributed evenly in packets of three.
+ */
 void Controler::distributeCards()
 {
     const std::size_t playerCount = players.size();
@@ -131,6 +142,9 @@ string Controler::display() const
     return result;
 }
 
+/**
+ * @brief Writes the controller's text representation to a stream.
+ */
 std::ostream &operator<<(std::ostream &os, const Controler &controler)
 {
     return os << controler.display();

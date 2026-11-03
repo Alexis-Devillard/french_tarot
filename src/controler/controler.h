@@ -30,6 +30,8 @@ public:
     // ==== Getters/Setters ====
     std::size_t getDealerIndex() const;
 
+    // TODO: function that verify the offer of each player, choose the one with the biggest and make him the dude alone
+
     // ==== UI ====
     string display() const;
 };
