@@ -26,6 +26,11 @@ void Player::addCardToHand(Card *card)
     this->hand.push_back(card);
 }
 
+void Player::emptyHand()
+{
+    this->hand.clear();
+}
+
 string Player::getName() const
 {
     return name;
@@ -49,6 +54,31 @@ void Player::setScore(int score)
 std::size_t Player::getHandSize() const
 {
     return this->hand.size();
+}
+
+std::size_t Player::getNumberOfTrumps() const
+{
+    std::size_t nb = 0;
+    for (Card* card: this->hand)
+    {
+        if (card->isTrump())
+        {
+            nb += 1;
+        }
+    }
+    return nb;
+}
+
+bool Player::hasOneOfTrump() const
+{
+    for (Card* card: this->hand)
+    {
+        if (card->isTrump() && card->getValue() == "1")
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 /**

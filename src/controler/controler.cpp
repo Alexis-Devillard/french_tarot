@@ -36,7 +36,7 @@ Controler::Controler(int nbPlayers)
  * @brief Resets player scores and prepares all clases for a new game.
  *
  * Sets the dealer, then initializes the draw pile.
- * Card distribution is then lunched.
+ *
  * @throws std::logic_error if the number of players is not between 3 and 5.
  */
 void Controler::initNewGame()
@@ -93,6 +93,7 @@ void Controler::distributeCards()
 
     const std::size_t firstPlayer = (this->dealerIndex + 1) % playerCount;
 
+    // Deal the cards
     for (std::size_t packet = 0; packet < cardsPerPlayer / 3; ++packet)
     {
         for (std::size_t offset = 0; offset < playerCount; ++offset)
@@ -112,8 +113,29 @@ void Controler::distributeCards()
                 this->board.addCardToDog(this->deck.drawCard());
             }
         }
-        
     }
+
+    // Verify that no player is dealt only the 1 of trumps and no others (counting the excuse as a trump) 
+    // If yes: the hand is cancelled and the cards are thrown in and the next dealer deals.
+    for (Player& player: this->players) {
+        if (player.getNumberOfTrumps() == 1)
+        {
+            if (player.hasOneOfTrump())
+            {
+                this->initNewRound();
+                this->distributeCards();
+            }
+        }
+    }
+}
+
+void Controler::initNewRound()
+{
+    for (Player& player: this->players) {
+        player.emptyHand();
+    }
+    this->deck.initDrawPile();
+    this->dealerIndex = (this->dealerIndex + 1) % this->players.size();
 }
 
 std::size_t Controler::getDealerIndex() const

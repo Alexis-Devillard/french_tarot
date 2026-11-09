@@ -14,6 +14,7 @@ public:
 
     // ==== Getters/Setters ====
     string getSymbol() const;
+    Kind kind() const override;
 
     // ==== UI ====
     string display() const override;

@@ -20,6 +20,7 @@ public:
     // === Game logic ===
     void reset();
     void addCardToHand(Card* card);
+    void emptyHand();
 
     // ==== Getters/Setters ====
     string getName() const;
@@ -29,6 +30,9 @@ public:
     void setScore(int score);
 
     std::size_t getHandSize() const;
+    std::size_t getNumberOfTrumps() const;
+    
+    bool hasOneOfTrump() const;
 
     // ==== UI ====
     string display() const;

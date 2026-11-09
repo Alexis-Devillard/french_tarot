@@ -18,8 +18,16 @@ public:
      */
     virtual ~Card() = default;
 
+    enum class Kind { Trump, Color };
+
+    // Logic
+    virtual Kind kind() const = 0;
+
     // ==== Getters/Setters ====
     string getValue() const;
+
+    bool isTrump() const { return kind() == Kind::Trump; }
+    bool isColor() const { return kind() == Kind::Color; }
 
     // ==== UI ====
     /**

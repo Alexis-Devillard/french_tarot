@@ -27,6 +27,8 @@ public:
     void initNewGame();
     void distributeCards();
 
+    void initNewRound();
+
     // ==== Getters/Setters ====
     std::size_t getDealerIndex() const;
 

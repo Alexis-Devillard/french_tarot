@@ -13,6 +13,11 @@ string ColorCard::getSymbol() const
     return this->symbol;
 }
 
+Card::Kind ColorCard::kind() const
+{
+    return Kind::Color;
+}
+
 /**
  * @brief Returns the card's value followed by its suit symbol.
  */
