@@ -14,7 +14,8 @@ class Controler
 {
 private:
     std::vector<Player> players;
-    std::size_t dealerIndex;
+    std::size_t dealerIndex = 0;
+    std::size_t takerIndex = 0;
 
     Deck deck;
     Board board;
@@ -25,14 +26,14 @@ public:
 
     // ==== Game operations ===
     void initNewGame();
-    void distributeCards();
-
     void initNewRound();
+
+    void distributeCards();
+    bool compareBids();
+
 
     // ==== Getters/Setters ====
     std::size_t getDealerIndex() const;
-
-    // TODO: function that verify the offer of each player, choose the one with the biggest and make him the dude alone
 
     // ==== UI ====
     string display() const;

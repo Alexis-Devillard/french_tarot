@@ -129,6 +129,36 @@ void Controler::distributeCards()
     }
 }
 
+/**
+ * @brief Compare the bid of every player. Select the taker or end the hand.
+ *
+ * A taker is selected only if one bid is not a pass.
+ * Return true if a taker is selected and false otherwise
+ */
+bool Controler::compareBids()
+{
+    Bids max = Bids::None;
+    for(Player& player: this->players) 
+    {
+        if(player.getBid() > max)
+        {
+            max = player.getBid();
+        }
+    }
+
+    if (max == Bids::None)
+    {
+        this->initNewRound();
+        return false;
+    }
+    return true;
+}
+
+/**
+ * @brief End the hand in progress and pass it to the next dealer
+ * 
+ * Clear the hand of every player, init the draw pile and assign the new dealer.
+ */
 void Controler::initNewRound()
 {
     for (Player& player: this->players) {

@@ -7,15 +7,17 @@ Player::Player(string name)
 {
     this->name = name;
     this->score = 0;
+    this->bid = Bids::None;
 }
 
 /**
- * @brief Resets the player's score and clears their hand.
+ * @brief Resets the player's score, clears their hand and bid.
  */
 void Player::reset()
 {
     this->score = 0;
     this->hand.clear();
+    this->bid = Bids::None;
 }
 
 /**
@@ -67,6 +69,11 @@ std::size_t Player::getNumberOfTrumps() const
         }
     }
     return nb;
+}
+
+Bids Player::getBid() const
+{
+    return this->bid;
 }
 
 bool Player::hasOneOfTrump() const

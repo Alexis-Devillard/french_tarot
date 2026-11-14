@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../cards/card.h"
+#include "../enum_class/bids.h"
 
 using std::string;
 
@@ -13,6 +14,7 @@ private:
     string name;
     int score;
     std::vector<Card*> hand;
+    Bids bid;
 
 public:
     Player(string name);
@@ -31,6 +33,8 @@ public:
 
     std::size_t getHandSize() const;
     std::size_t getNumberOfTrumps() const;
+
+    Bids getBid() const;
     
     bool hasOneOfTrump() const;
 
