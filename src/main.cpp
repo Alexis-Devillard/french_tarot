@@ -7,13 +7,10 @@ int main() {
     
     Controler controler = Controler(5);
 
-    std::cout << controler << std::endl;
-
     controler.initNewGame();
-
-    std::cout << controler << std::endl;
-
     controler.distributeCards();
+
+    controler.getPlayer(0).setBid(Bids::Guard_against_dog);
 
     std::cout << controler << std::endl;
 

@@ -103,11 +103,13 @@ string Deck::display() const
     string result = "Number of cards in deck: " + std::to_string(this->cards.size()) + "\n";
     result += "Number of cards in draw pile: " + std::to_string(this->drawPile.size()) + "\n";
 
+    /*
     result += "Cards:";
     for (size_t i = 0; i < this->drawPile.size(); i++)
     {
         result += "   " + this->drawPile[i]->display();
     }
+    */
 
     return result;
 }

@@ -35,6 +35,7 @@ public:
     std::size_t getNumberOfTrumps() const;
 
     Bids getBid() const;
+    void setBid(Bids bid);
     
     bool hasOneOfTrump() const;
 

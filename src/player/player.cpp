@@ -76,6 +76,11 @@ Bids Player::getBid() const
     return this->bid;
 }
 
+void Player::setBid(Bids bid)
+{
+    this->bid = bid;
+}
+
 bool Player::hasOneOfTrump() const
 {
     for (Card* card: this->hand)
@@ -95,7 +100,8 @@ string Player::display() const
 {
     string result = this->getName() + "\t";
     result += "Score: " + std::to_string(this->getScore()) + "\t";
-    result += "Nombre cartes main: " + std::to_string(this->getHandSize());
+    result += "Nombre cartes main: " + std::to_string(this->getHandSize()) + "\t";
+    result += "Bid: " + to_string(this->getBid());
     return result;
 }
 

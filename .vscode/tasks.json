@@ -22,6 +22,8 @@
 
                 "${workspaceFolder}\\src\\board\\board.cpp",
 
+                "${workspaceFolder}\\src\\enum_class\\bids.cpp",
+
                 "-o",
                 "${workspaceFolder}\\src\\tarot.exe",
             ],

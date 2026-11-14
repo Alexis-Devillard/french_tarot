@@ -173,6 +173,31 @@ std::size_t Controler::getDealerIndex() const
     return this->dealerIndex;
 }
 
+std::size_t Controler::getTakerIndex() const
+{
+    return this->takerIndex;
+}
+
+Player& Controler::getPlayer(std::size_t index)
+{
+    if (index >= this->players.size())
+    {
+        throw std::invalid_argument("Index must be in the range [0; number of player - 1]");
+    }
+
+    return this->players[index];
+}
+
+const Player& Controler::getPlayer(std::size_t index) const
+{
+    if (index >= this->players.size())
+    {
+        throw std::invalid_argument("Index must be in the range [0; number of player - 1]");
+    }
+
+    return this->players[index];
+}
+
 /**
  * @brief Returns a text representation of the controller.
  */
@@ -190,6 +215,10 @@ string Controler::display() const
 
     result += "====== Deck ======\n";
     result += this->deck.display() + "\n";
+
+    result += "====== Controler ======\n";
+    result += "Dealer: " + this->getPlayer(this->getDealerIndex()).getName() + "\n";
+    result += "Taker: " + this->getPlayer(this->getTakerIndex()).getName() + "\n";
     
     return result;
 }
