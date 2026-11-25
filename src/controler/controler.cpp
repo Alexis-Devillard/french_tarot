@@ -146,12 +146,71 @@ bool Controler::compareBids()
         }
     }
 
+    // If no bid, we giveup the round and init a new one
     if (max == Bids::None)
     {
         this->initNewRound();
         return false;
     }
+
     return true;
+}
+
+/**
+ * @brief Depending on the bid, give the dog or not to the right team
+ * 
+ * return true if there is a need to discards cards for the taker, false otherwise
+ */
+bool Controler::distributeDog(Bids bid)
+{
+    if (bid == Bids::None)
+    {
+        throw std::invalid_argument("Can't distribute dog if the bid is None");
+    }
+    
+    /**
+     * Case of small and guard
+     * - the cards in the dog are known to everyone
+     * - the taker add the dog to his hand and discard the same number of cards taken in the dog to his won cards
+     * - the discarded cards must not include trumps, kings or the excuse if possible
+     */
+    if (bid == Bids::Small || bid == Bids::Guard)
+    {
+        this->board.setDogVisibility(true);
+        this->board.setisDogForTaker(true);
+        for (size_t i = 0; i < this->board.getDogSize(); i++)
+        {
+            this->getTaker().addCardToHand(this->board.getDogCard(i));   
+        }
+        this->board.setisDogAlreadyTaken(true);
+        return true;
+    }
+
+    /**
+     * Case of guard without dog
+     * - nobody know the cards in the dog
+     * - the taker add the dog to his won cards
+     */
+    if (bid == Bids::Guard_without_dog)
+    {
+        this->board.setDogVisibility(false);
+        this->board.setisDogForTaker(true);
+        this->board.setisDogAlreadyTaken(false);
+        return false;
+    }
+
+    /**
+     * Case of Guatd against dog
+     * - nobody know the cards in the dog
+     * - the team against the taker add the dog to their won cards
+     */
+    if (bid == Bids::Guard_against_dog)
+    {
+        this->board.setDogVisibility(false);
+        this->board.setisDogForTaker(false);
+        this->board.setisDogAlreadyTaken(false);
+        return false;
+    }
 }
 
 /**
@@ -161,10 +220,15 @@ bool Controler::compareBids()
  */
 void Controler::initNewRound()
 {
+    // Players
     for (Player& player: this->players) {
         player.emptyHand();
     }
+    // Deck
     this->deck.initDrawPile();
+    // Board
+    this->board.emptyDog();
+    // Controler
     this->dealerIndex = (this->dealerIndex + 1) % this->players.size();
 }
 
@@ -176,6 +240,16 @@ std::size_t Controler::getDealerIndex() const
 std::size_t Controler::getTakerIndex() const
 {
     return this->takerIndex;
+}
+
+Player& Controler::getTaker()
+{
+    return this->getPlayer(this->getTakerIndex());
+}
+
+Player& Controler::getDealer()
+{
+    return this->getPlayer(this->getDealerIndex());
 }
 
 Player& Controler::getPlayer(std::size_t index)

@@ -13,7 +13,10 @@ class Player
 private:
     string name;
     int score;
+
     std::vector<Card*> hand;
+    std::vector<Card*> wonCards;
+
     Bids bid;
 
 public:
@@ -22,6 +25,7 @@ public:
     // === Game logic ===
     void reset();
     void addCardToHand(Card* card);
+    void addCardToWonCards(Card* card);
     void emptyHand();
 
     // ==== Getters/Setters ====

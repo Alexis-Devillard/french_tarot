@@ -31,10 +31,15 @@ public:
     void distributeCards();
     bool compareBids();
 
+    bool distributeDog(Bids bid);
+
 
     // ==== Getters/Setters ====
     std::size_t getDealerIndex() const;
     std::size_t getTakerIndex() const;
+
+    Player& getTaker();
+    Player& getDealer();
 
     Player& getPlayer(std::size_t index);
     const Player& getPlayer(std::size_t index) const;

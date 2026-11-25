@@ -20,6 +20,48 @@ std::size_t Board::getDogSize() const
     return this->dog.size();
 }
 
+void Board::setDogVisibility(bool visibility)
+{
+    this->canPlayerSeeDog = visibility;
+}
+
+void Board::setisDogAlreadyTaken(bool isDogAlreadyTaken)
+{
+    this->isDogAlreadyTaken = isDogAlreadyTaken;
+}
+
+void Board::setisDogForTaker(bool isForTaker)
+{
+    this->isDogForTaker = isDogForTaker;
+}
+
+void Board::emptyDog()
+{
+    this->dog.clear();
+}
+
+Card* Board::popDogCard()
+{
+    if (this->getDogSize() == 0)
+    {
+        throw std::logic_error("Can't pop an empty dog");
+    }
+    
+    Card* card = dog.back();
+    dog.pop_back();
+    return card;
+}
+
+Card* Board::getDogCard(size_t index)
+{
+    if (index >= this->getDogSize())
+    {
+        throw std::invalid_argument("Index can't be bigger than dog size.");
+    }
+    
+    return this->dog[index];
+}
+
 /**
  * @brief Returns a text representation of the board and its dog.
  */

@@ -28,6 +28,11 @@ void Player::addCardToHand(Card *card)
     this->hand.push_back(card);
 }
 
+void Player::addCardToWonCards(Card *card)
+{
+    this->wonCards.push_back(card);
+}
+
 void Player::emptyHand()
 {
     this->hand.clear();
