@@ -1,5 +1,7 @@
 #include "player.h"
 
+#include <stdexcept>
+
 /**
  * @brief Creates a player with the given name and an initial score of zero.
  */
@@ -36,6 +38,17 @@ void Player::addCardToWonCards(Card *card)
 void Player::emptyHand()
 {
     this->hand.clear();
+}
+
+void Player::discardCard(size_t index)
+{
+    if (index >= this->getHandSize())
+    {
+        throw std::invalid_argument("Index can't be bigger than the hand size");
+    }
+
+    this->wonCards.push_back(this->hand[index]);
+    this->hand.erase(this->hand.begin() + index);
 }
 
 string Player::getName() const

@@ -28,6 +28,8 @@ public:
     void addCardToWonCards(Card* card);
     void emptyHand();
 
+    void discardCard(size_t index);
+
     // ==== Getters/Setters ====
     string getName() const;
     void setName(string& name);
